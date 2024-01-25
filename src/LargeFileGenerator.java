@@ -15,15 +15,17 @@ public class LargeFileGenerator {
 
     private void generate() {
        var data = prepareData(5000000);
-        File f = new File("/test.txt");
+        File f = new File("test.txt");
 
         int stepCount = 10;
         long total = 0;
         for (int i = 0; i < stepCount; i++) {
             System.out.printf("Step %s%n " , (i + 1));
             long begin = System.currentTimeMillis();
-            long end = System.currentTimeMillis();
+
             // todo invoke method
+            writeFileSimple(f, data);
+            long end = System.currentTimeMillis();
             total += end - begin;
         }
         System.out.printf("Average time : %s%n", total / stepCount);
